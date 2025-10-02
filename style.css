@@ -1,0 +1,171 @@
+/* ===== VARIÁVEIS DE COR E CONFIGURAÇÕES GLOBAIS ===== */
+:root {
+    --cor-verde: #2E7D32;
+    --cor-verde-hover: #388E3C;
+    --cor-amarelo: #FFC107;
+    --cor-branco: #FFFFFF;
+    --cor-texto: #333333;
+    --cor-fundo-texto: #f9f9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--cor-texto);
+    overflow: hidden; /* Evita barras de rolagem indesejadas */
+}
+
+/* ===== LAYOUT DE TELA DIVIDIDA ===== */
+.split-screen-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left-pane, .right-pane {
+    flex: 1; /* Faz cada painel ocupar 50% da tela */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== PAINEL DIREITO (IMAGEM) ===== */
+.right-pane {
+    /* IMPORTANTE: Troque a URL pela imagem de sua escolha */
+    background-image: url('/src/pexels-shantanu-pal-938952-2802527.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s ease-in-out;
+}
+.right-pane:hover {
+    transform: scale(1.03); /* Efeito de zoom sutil na imagem */
+}
+
+/* ===== PAINEL ESQUERDO (CONTEÚDO) ===== */
+.left-pane {
+    background-color: var(--cor-fundo-texto);
+    padding: 40px;
+}
+
+.content-wrapper {
+    max-width: 450px;
+    text-align: left;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: var(--cor-verde);
+    font-weight: 700;
+    line-height: 1.1;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Linha amarela decorativa abaixo do H1 */
+h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 5px;
+    background-color: var(--cor-amarelo);
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* ===== LINKS SOCIAIS ===== */
+.social-links {
+    margin-bottom: 30px;
+}
+.social-links a {
+    color: var(--cor-texto);
+    font-size: 1.5rem;
+    margin-right: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.social-links a:hover {
+    color: var(--cor-amarelo);
+}
+
+/* ===== BOTÃO WHATSAPP (mesmo estilo de antes) ===== */
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: var(--cor-verde);
+    color: var(--cor-branco);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.whatsapp-button i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+.whatsapp-button:hover {
+    background-color: var(--cor-verde-hover);
+    transform: scale(1.05);
+}
+
+/* ===== ANIMAÇÃO DE ENTRADA ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+    /* ===== RESPONSIVIDADE PARA CELULARES ===== */
+    @media (max-width: 768px) {
+        .split-screen-container {
+            flex-direction: column; /* Coloca a imagem em cima e o texto embaixo */
+        }
+        .left-pane, .right-pane {
+            flex: none; /* Reseta a propriedade flex */
+            width: 100%;
+        }
+        .left-pane {
+            height: 60%; /* O texto ocupa 60% da altura */
+            text-align: center; /* Centraliza o texto no celular */
+        }
+        .content-wrapper {
+            align-items: center; /* Alinha o conteúdo no centro */
+        }
+        .right-pane {
+            height: 40%; /* A imagem ocupa 40% */
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        h1::after {
+            margin: 10px auto 0 auto; /* Centraliza a linha amarela */
+        }
+        h2 {
+            font-size: 1.2rem;
+        }
+    }

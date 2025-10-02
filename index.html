@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sol Nascente Temperos - Em Breve um Novo Sabor</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 </head>
 <body>
+
+<main class="split-screen-container">
+
+    <section class="left-pane">
+        <div class="content-wrapper">
+            <h1>Sol Nascente</h1>
+            <h2>Um novo sabor está a caminho.</h2>
+            <p>
+                Estamos cultivando com carinho uma nova experiência digital para você.
+                Em breve, nosso site estará repleto de aromas, receitas e, claro, os melhores temperos
+                para transformar suas refeições.
+            </p>
+
+            <div class="social-links">
+                <a href="https://www.instagram.com/produtosolnascente/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" id="social-whatsapp-link" aria-label="WhatsApp"
+                   data-country="55" data-area="62" data-number="991122981">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="right-pane">
+    </section>
+
+</main>
+
+<script>
+    // Esta função garante que o script só rode depois que a página estiver totalmente carregada.
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Função reutilizável para configurar qualquer link de WhatsApp
+        function setWhatsappLink(elementId) {
+            const linkElement = document.getElementById(elementId);
+
+            // Só continua se o elemento realmente existir na página
+            if (linkElement) {
+                // Pega os pedaços do número guardados nos atributos 'data-*'
+                const country = linkElement.dataset.country;
+                const area = linkElement.dataset.area;
+                const number = linkElement.dataset.number;
+
+                // Monta a URL completa do WhatsApp
+                const fullUrl = `https://wa.me/${country}${area}${number}`;
+
+                // Finalmente, insere a URL montada no atributo 'href' do link
+                linkElement.setAttribute('href', fullUrl);
+            }
+        }
+
+        // Chama a função para cada um dos seus links de WhatsApp
+        setWhatsappLink('social-whatsapp-link');
+        setWhatsappLink('main-whatsapp-link');
+
+    });
+</script>
 
 </body>
 </html>
